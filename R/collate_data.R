@@ -19,6 +19,7 @@ ft_populate_pax <- function(
     year_end = year_end
   )
 
+  pax::pax_import(pcon, pax::pax_marmap_ocean_depth())
   # Extract required tables, place into pcon
   for (s in strata) {
     pax::pax_import(pcon, pax::pax_def_strata(s))
