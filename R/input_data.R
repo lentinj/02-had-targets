@@ -33,7 +33,6 @@ ft_input_data_maturity_key <- function(
   pcon,
   lgroups = seq(0, 200, 5),
   regions = NULL,
-  default_region = 'S',
   ignore_years = c(),
   sampling_type = 30
 ) {
@@ -49,7 +48,7 @@ ft_input_data_maturity_key <- function(
         dplyr::mutate(mat = ifelse(maturity_stage == 1, 0, 1))
     ) |>
     pax::pax_add_lgroups(lgroups = lgroups) |>
-    pax::pax_add_regions(regions = regions, default = default_region) |>
+    pax::pax_add_regions(regions = regions) |>
     dplyr::group_by(year, lgroup, age, region) |>
     dplyr::summarise(mat_p = mean(mat))
 
