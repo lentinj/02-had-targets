@@ -3,3 +3,6 @@ targets::tar_make()
 
 Sys.setenv(TAR_PROJECT = "plots_and_tables")
 targets::tar_make()
+
+Sys.setenv(TAR_PROJECT = "advice")
+targets::tar_make()

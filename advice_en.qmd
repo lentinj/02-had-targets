@@ -1,0 +1,62 @@
+---
+editor_options:
+  markdown:
+    wrap: 150
+title: "HADDOCK *Melanogrammus aeglefinus*"
+format:
+  html:
+    theme: theme/advice.scss
+    fontsize: 1.125em
+    linestretch: 1.9
+    embed-resources: true
+#   docx:
+#     reference-doc: test.docx
+# #    title-block-banner: true
+crossref:
+  fig-title: ''
+  #fig-labels: ''
+execute:
+  echo: false
+  warning: false
+  message: false
+params:
+  tac: NULL
+  tac_last_year: NULL
+  year_end: NULL
+---
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+# NB: params are handed to quarto via. YAML, so cannot contain complex structures
+#     Have to load them out of the current store instead
+targets::tar_load(c(
+  advice_table_landings,
+  advice_plot_landings_en
+))
+```
+
+```{r}
+#| echo: false
+#| output: asis
+
+tidypax::banner_func(tyr = params$year_end, tac = params$tac,tac_last_year = params$tac_last_year, publication_date = '7. June 2024.',lang = 'en')
+
+```
+
+## Advice
+
+MFRI and ICES advise that when the Icelandic management plan is applied, catches in the fishing year `r params$year_end`/`r params$year_end+1` should be no more than `r tidypax::red_dot_number(params$tac)` tonnes.
+
+## Stock development
+
+Fishing pressure is above HR~MSY~ and HR~pa~ and below HR~lim~; spawning stock size is above MSY B~trigger~, B~pa~ and B~lim~.
+
+```{r}
+#| echo: false
+ggiraph::girafe(ggobj = advice_plot_landings_en,#TODO: + recr('en') + fpl('en') + ssb('en'),
+                options = list(
+                  #ggiraph::opts_hover_inv(css = "opacity:0.7;"),
+                  #ggiraph::opts_hover(css = "stroke-width:2;"),
+                  #ggiraph::opts_sizing(width = .7),
+                  ggiraph::opts_zoom(max = 5)
+                ))
+```

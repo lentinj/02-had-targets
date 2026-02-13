@@ -1,0 +1,64 @@
+---
+editor_options:
+  markdown:
+    wrap: 150
+title: "ÝSA *Melanogrammus aeglefinus*"
+format:
+  html:
+    theme: theme/advice.scss
+    fontsize: 1.125em
+    linestretch: 1.9
+    embed-resources: true
+#   docx:
+#     reference-doc: test.docx
+# #    title-block-banner: true
+crossref:
+  fig-title: ''
+  #fig-labels: ''
+execute:
+  echo: false
+  warning: false
+  message: false
+params:
+  tac: NULL
+  tac_last_year: NULL
+  year_end: NULL
+---
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+# NB: params are handed to quarto via. YAML, so cannot contain complex structures
+#     Have to load them out of the current store instead
+targets::tar_load(c(
+  advice_table_landings,
+  advice_plot_landings_en
+))
+```
+
+```{r}
+#| echo: false
+#| output: asis
+
+tidypax::banner_func(tyr = params$year_end, tac = params$tac,tac_last_year = params$tac_last_year, publication_date = '7. júní 2024.',lang = 'en')
+
+```
+
+## Advice
+
+Hafrannsóknastofnun og Alþjóðahafrannsóknaráðið leggja til, í samræmi við aflareglu íslenskra stjórnvalda, að afli fiskveiðiárið `r params$year_end`/`r params$year_end+1` verði ekki
+meiri en `r tidypax::red_dot_number(params$tac)` tonn.
+
+## Stofnþróun
+
+Veiðiálag er yfir kjörsókn (HR~MSY~) og gátmörkum (HR~pa~) en undir varúðarmörkum (HR~lim~). Stærð hrygningarstofns er yfir
+aðgerðarmörkum (MSY B~trigger~), gátmörkum (B~pa~) og varúðarmörkum (B~lim~).
+
+```{r}
+#| echo: false
+ggiraph::girafe(ggobj = advice_plot_landings_en,#TODO: + recr('en') + fpl('en') + ssb('en'),
+                options = list(
+                  #ggiraph::opts_hover_inv(css = "opacity:0.7;"),
+                  #ggiraph::opts_hover(css = "stroke-width:2;"),
+                  #ggiraph::opts_sizing(width = .7),
+                  ggiraph::opts_zoom(max = 5)
+                ))
+```
