@@ -22,7 +22,7 @@ list(
   # Open database from assessment_model
   tar_target(
     pax_db,
-    pax::pax_connect("_assessment_model/objects/pax_db"),
+    pax::pax_connect("_assessment_model/objects/pax_db", read_only = TRUE),
     format = pax::pax_tar_format_duckdb()
   ),
 

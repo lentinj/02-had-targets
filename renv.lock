@@ -4034,7 +4034,7 @@
       "RemoteUsername": "hafro",
       "RemoteRepo": "pax",
       "RemoteRef": "main",
-      "RemoteSha": "312774b6d7f51a1a47732e830c27b589c18c8586"
+      "RemoteSha": "14952aaf5dbb5081da73418ac975a21776b4024c"
     },
     "pillar": {
       "Package": "pillar",
