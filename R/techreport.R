@@ -20,11 +20,8 @@ ft_catch_by_location <- function(
 ) {
   dplyr::tbl(pcon, "logbook") |>
     dplyr::filter(year > local(year_start)) |>
-    # TODO: Should be grouping by lat/lon, but the resulting ~110 000 rows gives MetR a headache?
-    dplyr::group_by(year, gridcell) |>
+    dplyr::group_by(year, lat = round(lat, 1), lon = round(lon, 1)) |>
     dplyr::summarise(
-      lat = mean(lat),
-      lon = mean(lon),
       catch = sum(1e-3 * catch / tow_area, na.rm = TRUE),
       tow_time = sum(tow_time / tow_area, na.rm = TRUE)
     ) |>
