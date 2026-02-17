@@ -3830,6 +3830,46 @@
       "Maintainer": "Hadley Wickham <hadley@posit.co>",
       "Repository": "CRAN"
     },
+    "nanoparquet": {
+      "Package": "nanoparquet",
+      "Version": "0.4.3",
+      "Source": "Repository",
+      "Title": "Read and Write 'Parquet' Files",
+      "Authors@R": "c( person(\"Gábor\", \"Csárdi\", role = c(\"aut\", \"cre\"), email = \"csardi.gabor@gmail.com\"), person(\"Hannes\", \"Mühleisen\", role = c(\"aut\", \"cph\"), comment = c(ORCID = \"0000-0001-8552-0029\")), person(\"Google Inc.\", role = \"cph\"), person(\"Apache Software Foundation\", role = \"cph\"), person(\"Posit Software, PBC\", role = \"cph\"), person(\"RAD Game Tools\", role = \"cph\"), person(\"Valve Software\", role = \"cph\"), person(\"Tenacious Software LLC\", role = \"cph\"), person(\"Facebook, Inc.\", role = \"cph\"))",
+      "Description": "Self-sufficient reader and writer for flat 'Parquet' files. Can read most 'Parquet' data types. Can write many 'R' data types, including factors and temporal types. See docs for limitations.",
+      "Depends": [
+        "R (>= 4.0.0)"
+      ],
+      "License": "MIT + file LICENSE",
+      "URL": "https://github.com/r-lib/nanoparquet, https://nanoparquet.r-lib.org/",
+      "BugReports": "https://github.com/r-lib/nanoparquet/issues",
+      "Encoding": "UTF-8",
+      "Suggests": [
+        "arrow",
+        "bit64",
+        "DBI",
+        "duckdb (>= 1.4.0)",
+        "hms",
+        "mockery",
+        "pillar",
+        "processx",
+        "rprojroot",
+        "spelling",
+        "testthat",
+        "tzdb",
+        "withr"
+      ],
+      "RoxygenNote": "7.3.2.9000",
+      "Config/testthat/edition": "3",
+      "Config/testthat/parallel": "TRUE",
+      "Config/Needs/website": "tidyverse/tidytemplate, r-lib/pkgdown, dplyr, gt, gtExtras, knitr, nycflights13, prettyunits, quarto, rmarkdown, sessioninfo, svglite",
+      "Language": "en-US",
+      "Biarch": "true",
+      "NeedsCompilation": "yes",
+      "Author": "Gábor Csárdi [aut, cre], Hannes Mühleisen [aut, cph] (ORCID: <https://orcid.org/0000-0001-8552-0029>), Google Inc. [cph], Apache Software Foundation [cph], Posit Software, PBC [cph], RAD Game Tools [cph], Valve Software [cph], Tenacious Software LLC [cph], Facebook, Inc. [cph]",
+      "Maintainer": "Gábor Csárdi <csardi.gabor@gmail.com>",
+      "Repository": "CRAN"
+    },
     "ncdf4": {
       "Package": "ncdf4",
       "Version": "1.24",
@@ -4561,7 +4601,7 @@
       "Config/Needs/website": "tidyverse/tidytemplate",
       "Config/testthat/edition": "3",
       "Config/usethis/last-upkeep": "2025-05-05",
-      "Copyright": "Original python appdirs module copyright (c) 2010 ActiveState Software Inc. R port copyright Hadley Wickham, Posit, PBC. See file LICENSE for details.",
+      "Copyright": "Original python appdirs module copyright (c) 2010 ActiveState Software Inc. R port copyright Hadley Wickham, Posit, PBC.  See file LICENSE for details.",
       "Encoding": "UTF-8",
       "RoxygenNote": "7.3.3",
       "NeedsCompilation": "yes",
@@ -5006,23 +5046,23 @@
       "Authors@R": "c(person(\"Bjarki\", \"Elvarsson\", email = \"bjarki.elvarsson@hafogvatn.is\",role = c(\"aut\",\"cre\")), person(\"Einar\", \"Hjorleifsson\", email = \"einar.hjorleifsson@hafogvatn.is\",role = c(\"aut\")), person(\"Hoskuldur\", \"Bjornsson\", email = \"hoskuldur.bjornsson@hafogvatn.is\",role = c(\"aut\")))",
       "Description": "Muppeteers",
       "Depends": [
-        "R (>= 4.2.0)"
+        "R (>= 3.5.1)"
       ],
       "License": "GPL (>=2)",
       "Encoding": "UTF-8",
+      "LazyData": "true",
       "Imports": [
         "tidyverse"
       ],
       "RoxygenNote": "6.1.0",
+      "Author": "Bjarki Elvarsson [aut, cre], Einar Hjorleifsson [aut], Hoskuldur Bjornsson [aut]",
+      "Maintainer": "Bjarki Elvarsson <bjarki.elvarsson@hafogvatn.is>",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteRepo": "rmuppet",
       "RemoteUsername": "fishvice",
       "RemoteRef": "HEAD",
-      "RemoteSha": "698b03c6538616da70324155697ac081fb69d73f",
-      "NeedsCompilation": "yes",
-      "Author": "Bjarki Elvarsson [aut, cre], Einar Hjorleifsson [aut], Hoskuldur Bjornsson [aut]",
-      "Maintainer": "Bjarki Elvarsson <bjarki.elvarsson@hafogvatn.is>"
+      "RemoteSha": "698b03c6538616da70324155697ac081fb69d73f"
     },
     "rstudioapi": {
       "Package": "rstudioapi",
