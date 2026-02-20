@@ -37,7 +37,7 @@ list(
   ),
 
   tar_target(
-    catch_dist_selectyrs,
+    fig_catchdistplot_selectyrs,
     c(2001, 2005, 2010, 2015, year_end - 1)
   ),
 

@@ -56,7 +56,7 @@ targets::tar_source()
 # NB: params are handed to quarto via. YAML, so cannot contain complex structures
 #     Have to load them out of the current store instead
 targets::tar_load(c(
-  catch_dist_selectyrs,
+  fig_catchdistplot_selectyrs,
   pax_db
 ))
 ```
@@ -76,9 +76,9 @@ Veiðar á ýsu hafa ekki breyst mikið seinasta áratuginn, en fjöldi báta se
 ```{r}
 #| label: fig-catchdistplot
 #| fig-cap: 'Ýsa. Útbreiðsla veiða frá öllum veiðarfærum, samkvæmt afladagbókum.'
-ft_catch_dist_selectyrs_plot(
+hrep_techreport_fig_catchdistplot(
   pax_db,
-  years = catch_dist_selectyrs,
+  years = fig_catchdistplot_selectyrs,
   lang = lang
 )
 ```

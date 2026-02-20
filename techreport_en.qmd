@@ -53,7 +53,7 @@ targets::tar_source()
 # NB: params are handed to quarto via. YAML, so cannot contain complex structures
 #     Have to load them out of the current store instead
 targets::tar_load(c(
-  catch_dist_selectyrs,
+  fig_catchdistplot_selectyrs,
   pax_db
 ))
 ```
@@ -71,9 +71,9 @@ The fishery for haddock in 5a has not changed substantially in recent years, but
 ```{r}
 #| label: fig-catchdistplot
 #| fig-cap: 'Haddock in 5a. Spatial distribution of catches by all gears for selected years.'
-ft_catch_dist_selectyrs_plot(
+hrep_techreport_fig_catchdistplot(
   pax_db,
-  years = catch_dist_selectyrs,
+  years = fig_catchdistplot_selectyrs,
   lang = lang
 )
 ```

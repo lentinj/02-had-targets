@@ -48,7 +48,7 @@ ft_catch_dist_plot <- function(
   return(out)
 }
 
-ft_catch_dist_selectyrs_plot <- function(
+hrep_techreport_fig_catchdistplot <- function(
   pcon,
   years,
   lang = "en"
