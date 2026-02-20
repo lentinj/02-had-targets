@@ -67,8 +67,6 @@ pal <- c("#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C",
 # NB: params are handed to quarto via. YAML, so cannot contain complex structures
 #     Have to load them out of the current store instead
 targets::tar_load(c(
-  snippet_techreport_general_en,
-  snippet_techreport_fishery_en,
   fig_catch_dist_plot_en,
   fig_catch_dist_selectyrs_plot_en
 ))
@@ -76,15 +74,13 @@ targets::tar_load(c(
 
 ## General information
 
-```{r, results='asis', echo=FALSE}
-cat(knitr::knit_child(snippet_techreport_general_en, quiet=T), sep = "\n")
-```
+Icelandic haddock (*Melanogrammus aeglefinus*) is fairly abundant in the coastal waters around Iceland and is mostly limited to the Icelandic continental shelf, while 0-group and juveniles from the stock are occasionally found in East Greenland waters (ICES area 14). Apart from this, larval drifts links with other regions have not been found. In addition, minimal catches have been reported in area 14 (maximum of less than 10 tons in 2016). The nearest area to Iceland where haddock is found in reasonable abundance are in shallow Faroese waters, which constitutes as a separate stock. The two regions are separated by a wide and relatively deep ridge, an area where reporting of haddock catches is nonexistent, both commercially and scientifically. Tagging studies [@jonsson1996tagging] conducted between 1953 and 1965 showed no migrations of juvenile and mature fish outside of Icelandic waters, as most recaptures took place in the area of tagging (or adjacent areas) and on the spawning grounds south of Iceland. Information about stock structure (metapopulation) of haddock in Icelandic waters is limited.
+
+The species is found all around the Icelandic coast, principally in the relatively warm waters off the west and south coast, in shallow waters (10-200 m depth). Spawning has historically been limited to the southern waters. Haddock is also found off the north coast and in warm periods a large part of the immature fish have been found north of Iceland. In recent years a larger part of the fishable stock has been found off the north coast of Iceland than in the last two decades of the 20th century.
 
 ## Fishery
 
-```{r, results='asis', echo=FALSE}
-cat(knitr::knit_child(snippet_techreport_fishery_en, quiet=T), sep = "\n")
-```
+The fishery for haddock in 5a has not changed substantially in recent years, but the total number of boats that account for 95% of the fishery has been declining steadily (@fig-numvesselplot and table 1). Around 250 longliners annually report catches of haddock, around 60 trawlers and 40 demersal seine boats. Most of Haddock in 5a is caught by trawlers and the proportion caught by that gear has decreased since 1995 from around 70% to 45% in 2017. However, for the last two years this proportion has increased slightly and is now around 60%. At the same time the proportion caught by longlines has increased from around 15% in 1995 - 2000 to 40 % in 2011--`r tyr-1`. Catches in demersal seine have varied less and have been at around 15% of Icelandic catches of Haddock in 5a. Currently less than 2% of catches are taken by other vessel types, but historically up to 10 % of total catches were by gillnetters, but since 2000 these catches have been low (@fig-landingsbygear). Most of the haddock caught in 5a by Icelandic vessels is caught at depths less than 200 m (@fig-depthplot). The main fishing grounds for Haddock in 5a, as observed from logbooks, are in the south, southwestern and western part of the Icelandic shelf (@fig-catchbyarea and @fig-catchdistplot). The main trend in the spatial distribution of haddock catches in 5a according to logbook entries is the increased proportion of catches caught in the north and northeast.
 
 ```{r}
 #| label: fig-catchdistplot

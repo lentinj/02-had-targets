@@ -32,16 +32,6 @@ list(
 
   tar_map(
     tar_target(
-      snippet_techreport_general,
-      paste0("snippets/techreport_general_", lang, ".md"),
-      format = "file"
-    ),
-    tar_target(
-      snippet_techreport_fishery,
-      paste0("snippets/techreport_fishery_", lang, ".md"),
-      format = "file"
-    ),
-    tar_target(
       fig_catch_dist_plot,
       ft_catch_dist_plot(pax_db, year_start = 1989, lang = lang) |>
         ggplot2::ggsave(
