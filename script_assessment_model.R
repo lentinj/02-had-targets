@@ -66,7 +66,7 @@ list(
       tow_number = 0:35,
       lw_key = input_data_lw_pred,
       maturity_key = input_data_maturity_key,
-      strata_name = "new_strata_spring",
+      strata_name = "old_strata",
       tgroup = NULL,
       regions = list(
         S = c(101, 107, 106, 108, 109, 114),
