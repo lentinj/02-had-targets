@@ -16,11 +16,7 @@ format:
     toc_float: true
     title-block-banner: "#fff"
     title-block-banner-color: "#3f6658"
-  # docx:
-  #   reference-doc: ices_template.docx
-#knitr:
-#  opts_knit:
-#    root.dir: '..'
+lang: en
 language:
   en:
     title-block-author-single: "Published by"
@@ -28,18 +24,6 @@ execute:
   echo: false
   warning: false
   message: false
-# bookdown::html_document2: default
-#  officedown::rdocx_document:
-    # tables:
-    #   caption:
-    #     pre: 'Table '
-#    fig_caption: yes
-#    keep_md: yes
-#    number_sections: true
-  #reference_docx: 02-Haddock_TR.docx
-#    reference_docx: taekniskyrsla18en.docx
-  #reference_docx: ices_template2.docx
-#  pdf_document: default
 bibliography: library.bib
 params:
   year_end: NULL
@@ -64,11 +48,13 @@ pal <- c("#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C",
 ```
 
 ```{r message=FALSE, warning=FALSE}
+lang <- rmarkdown::metadata$lang
+targets::tar_source()
 # NB: params are handed to quarto via. YAML, so cannot contain complex structures
 #     Have to load them out of the current store instead
 targets::tar_load(c(
-  fig_catch_dist_plot,
-  fig_catch_dist_selectyrs_plot
+  catch_dist_selectyrs,
+  pax_db
 ))
 ```
 
@@ -85,6 +71,9 @@ The fishery for haddock in 5a has not changed substantially in recent years, but
 ```{r}
 #| label: fig-catchdistplot
 #| fig-cap: 'Haddock in 5a. Spatial distribution of catches by all gears for selected years.'
-fig_catch_dist_selectyrs_plot + ggplot2::labs(
+ft_catch_dist_selectyrs_plot(
+  pax_db,
+  years = catch_dist_selectyrs,
+  lang = lang
 )
 ```

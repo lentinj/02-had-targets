@@ -37,12 +37,8 @@ list(
   ),
 
   tar_target(
-    fig_catch_dist_selectyrs_plot,
-    ft_catch_dist_selectyrs_plot(
-      pax_db,
-      years = c(2001, 2005, 2010, 2015, year_end - 1)
-    ),
-    format = "rds"
+    catch_dist_selectyrs,
+    c(2001, 2005, 2010, 2015, year_end - 1)
   ),
 
   ## Technical reports

@@ -1,7 +1,6 @@
 # _targets.R file
 library(targets)
 library(tarchetypes)
-library(qs2)
 
 tar_source() # Source R/*.R
 
@@ -29,22 +28,10 @@ list(
   ## tables
   tar_target(advice_table_landings, ft_advice_table_landings(pax_db)),
 
-  tar_map(
-    ## plots
-    tar_target(
-      advice_plot_landings,
-      ft_advice_plot_landings(lang, advice_table_landings, year_end),
-      format = "qs"
-    ),
-
-    ## i.e. run pipeline for lang = en & lang = is
-    values = list(lang = c("en", "is"))
-  ),
   ## Advice sheets
-  # TODO: tar_map can't control path, so duplicating targets manually. Any other options?
   tar_quarto(
     advice_en,
-    path = paste0("advice_en.qmd"),
+    path = "advice_en.qmd",
     execute_params = list(
       tac = tac,
       tac_last_year = tac_last_year,
@@ -54,7 +41,7 @@ list(
   ),
   tar_quarto(
     advice_is,
-    path = paste0("advice_is.qmd"),
+    path = "advice_is.qmd",
     execute_params = list(
       tac = tac,
       tac_last_year = tac_last_year,

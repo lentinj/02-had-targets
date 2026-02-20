@@ -9,6 +9,7 @@ format:
     fontsize: 1.125em
     linestretch: 1.9
     embed-resources: true
+lang: is
 language: _language_is.yml
 crossref:
   fig-title: ''
@@ -24,11 +25,12 @@ params:
 ---
 
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
+lang <- rmarkdown::metadata$lang
+targets::tar_source()
 # NB: params are handed to quarto via. YAML, so cannot contain complex structures
 #     Have to load them out of the current store instead
 targets::tar_load(c(
-  advice_table_landings,
-  advice_plot_landings_en
+  advice_table_landings
 ))
 ```
 
@@ -52,7 +54,9 @@ aðgerðarmörkum (MSY B~trigger~), gátmörkum (B~pa~) og varúðarmörkum (B~l
 
 ```{r}
 #| echo: false
-ggiraph::girafe(ggobj = advice_plot_landings_en,#TODO: + recr('en') + fpl('en') + ssb('en'),
+ggiraph::girafe(ggobj =
+  ft_advice_plot_landings(advice_table_landings, lang = lang),
+  #TODO: + recr('en') + fpl('en') + ssb('en'),
                 options = list(
                   #ggiraph::opts_hover_inv(css = "opacity:0.7;"),
                   #ggiraph::opts_hover(css = "stroke-width:2;"),

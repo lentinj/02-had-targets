@@ -15,6 +15,7 @@ format:
     toc_float: true
     title-block-banner: "#fff"
     title-block-banner-color: "#3f6658"
+lang: is
 execute:
   echo: false
   warning: false
@@ -50,11 +51,13 @@ pal <- c("#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C",
 ```
 
 ```{r message=FALSE, warning=FALSE}
+lang <- rmarkdown::metadata$lang
+targets::tar_source()
 # NB: params are handed to quarto via. YAML, so cannot contain complex structures
 #     Have to load them out of the current store instead
 targets::tar_load(c(
-  fig_catch_dist_plot,
-  fig_catch_dist_selectyrs_plot
+  catch_dist_selectyrs,
+  pax_db
 ))
 ```
 
@@ -73,7 +76,9 @@ Veiðar á ýsu hafa ekki breyst mikið seinasta áratuginn, en fjöldi báta se
 ```{r}
 #| label: fig-catchdistplot
 #| fig-cap: 'Ýsa. Útbreiðsla veiða frá öllum veiðarfærum, samkvæmt afladagbókum.'
-fig_catch_dist_selectyrs_plot + ggplot2::labs(
-  fill = 'Afli (t/nm2)'
+ft_catch_dist_selectyrs_plot(
+  pax_db,
+  years = catch_dist_selectyrs,
+  lang = lang
 )
 ```
