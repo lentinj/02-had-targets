@@ -15,6 +15,8 @@ HR_MGT <- 0.35
 tar_option_set(
   format = pax::pax_tar_format_parquet(),
   packages = c(),
+  error = 'continue',
+  workspaces = 'sam_dat'
 )
 
 list(
@@ -32,7 +34,7 @@ list(
         species,
         year_start,
         year_end,
-        sampling_type = c(1, 2, 8, 30, 35)
+        sampling_type = c(1, 2, 8, 10, 11, 30, 35)
       ),
       format = pax::pax_tar_format_duckdb()
     )

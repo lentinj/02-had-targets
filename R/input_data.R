@@ -109,7 +109,9 @@ ft_input_data_si_index <- function(
 
   alk <- dplyr::tbl(pcon, "station") |>
     dplyr::filter(
-      sampling_type %in% local(sampling_type),
+      sampling_type %in%
+        local(sampling_type) |
+        (year < 1981 & (sampling_type %in% 10:11)),
       coalesce(tow_number, 0) %in% local(tow_number),
       local(is.null(gear_id_filter)) | (gear_id %in% local(gear_id_filter))
     ) |>
