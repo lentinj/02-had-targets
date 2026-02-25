@@ -8,7 +8,7 @@ write_file_list <- function(fl, workdir) {
   return(workdir)
 }
 
-ft_muppet_run <- function(
+hr_muppet_run <- function(
   model_name,
   muppet_input_files,
   clear_on_exit = TRUE,

@@ -1,4 +1,4 @@
-ft_input_data_lw <- function(
+hr_input_data_lw <- function(
   pcon,
   sampling_type = 30,
   prediction_length_range = NULL
@@ -29,7 +29,7 @@ ft_input_data_lw <- function(
   return(lw_dat)
 }
 
-ft_input_data_maturity_key <- function(
+hr_input_data_maturity_key <- function(
   pcon,
   lgroups = seq(0, 200, 5),
   regions = NULL,
@@ -77,7 +77,7 @@ ft_input_data_maturity_key <- function(
 }
 
 ## Generate the ALK from the survey
-ft_input_data_si_index <- function(
+hr_input_data_si_index <- function(
   pcon,
   lw_key = NULL,
   maturity_key = NULL,
@@ -180,7 +180,7 @@ ft_input_data_si_index <- function(
   return(out)
 }
 
-ft_input_data_landings <- function(pcon) {
+hr_input_data_landings <- function(pcon) {
   dplyr::tbl(pcon, "landings") |>
     dplyr::group_by(year) |>
     dplyr::summarize(catch = sum(catch))

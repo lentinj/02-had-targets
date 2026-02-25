@@ -1,4 +1,4 @@
-ft_muppet_input_progwts <- function(assessment_input_data, year_end) {
+hr_muppet_input_progwts <- function(assessment_input_data, year_end) {
   input_dat <- assessment_input_data |>
     dplyr::filter(year >= year_start, age %in% 1:age_end)
 

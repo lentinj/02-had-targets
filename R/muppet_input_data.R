@@ -1,4 +1,4 @@
-ft_muppet_input_datafiles <- function(
+hr_muppet_input_datafiles <- function(
   assessment_input_data,
   year_start,
   year_end,

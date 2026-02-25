@@ -1,4 +1,4 @@
-ft_nb_lnd_by_yr <- function(
+hr_nb_lnd_by_yr <- function(
   pcon,
   year_end
 ) {
@@ -14,7 +14,7 @@ ft_nb_lnd_by_yr <- function(
     pax::pax_landings_boat_summary()
 }
 
-ft_catch_by_location <- function(
+hr_catch_by_location <- function(
   pcon,
   year_start
 ) {
@@ -28,7 +28,7 @@ ft_catch_by_location <- function(
     dplyr::ungroup()
 }
 
-ft_catch_dist_plot <- function(
+hr_catch_dist_plot <- function(
   pcon,
   year_start = max(year_start, year_end - 22),
   lang = "en"
@@ -36,7 +36,7 @@ ft_catch_dist_plot <- function(
   out <- pax::pax_map_base() |>
     pax::pax_map_layer_depth(dplyr::tbl(pcon, "ocean_depth")) |>
     pax::pax_map_layer_catch(
-      ft_catch_by_location(pcon, year_start) |>
+      hr_catch_by_location(pcon, year_start) |>
         dplyr::collect(n = Inf),
       alpha = 1,
       na.fill = -50,
@@ -48,7 +48,7 @@ ft_catch_dist_plot <- function(
   return(out)
 }
 
-hrep_techreport_fig_catchdistplot <- function(
+hr_techreport_fig_catchdistplot <- function(
   pcon,
   years,
   lang = "en"
@@ -56,7 +56,7 @@ hrep_techreport_fig_catchdistplot <- function(
   out <- pax::pax_map_base(low_res = TRUE) |>
     pax::pax_map_layer_depth(dplyr::tbl(pcon, "ocean_depth")) |>
     pax::pax_map_layer_catch(
-      ft_catch_by_location(pcon, min(years)) |>
+      hr_catch_by_location(pcon, min(years)) |>
         dplyr::filter(year %in% local(years)) |>
         dplyr::collect(n = Inf),
       alpha = 1,

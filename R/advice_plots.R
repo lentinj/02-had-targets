@@ -1,4 +1,4 @@
-ft_advice_plot_landings <- function(
+hr_advice_plot_landings <- function(
   advice_table_landings,
   year_end,
   lang = "en"

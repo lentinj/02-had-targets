@@ -27,13 +27,13 @@ list(
 
   tar_target(
     table_nb_lnd_by_yr,
-    ft_nb_lnd_by_yr(pax_db),
+    hr_nb_lnd_by_yr(pax_db),
     format = pax_tar_format_parquet()
   ),
 
   tar_target(
     fig_catch_dist_plot,
-    ft_catch_dist_plot(pax_db, year_start = 1989),
+    hr_catch_dist_plot(pax_db, year_start = 1989),
     format = "rds"
   ),
 

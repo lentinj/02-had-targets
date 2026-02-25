@@ -25,7 +25,7 @@ list(
   } else {
     tar_target(
       pax_db,
-      ft_populate_pax(
+      hr_populate_pax(
         species,
         year_start,
         year_end,
@@ -38,7 +38,7 @@ list(
   ## Generate input data
   tar_target(
     input_data_lw_pred,
-    ft_input_data_lw(
+    hr_input_data_lw(
       pax_db,
       sampling_type = 30,
       prediction_length_range = 1:150
@@ -47,7 +47,7 @@ list(
   ),
   tar_target(
     input_data_maturity_key,
-    ft_input_data_maturity_key(
+    hr_input_data_maturity_key(
       pax_db,
       lgroup = seq(0, 200, 5),
       regions = list(
@@ -60,7 +60,7 @@ list(
   ),
   tar_target(
     input_data_igfs_index,
-    ft_input_data_si_index(
+    hr_input_data_si_index(
       pax_db,
       sampling_type = 30,
       tow_number = 0:35,
@@ -78,7 +78,7 @@ list(
   ),
   tar_target(
     input_data_agfs_index,
-    ft_input_data_si_index(
+    hr_input_data_si_index(
       pax_db,
       regions = list(all = 101:115),
       sampling_type = 35,
@@ -90,7 +90,7 @@ list(
   ),
   tar_target(
     input_data_comm_index,
-    ft_input_data_si_index(
+    hr_input_data_si_index(
       pax_db,
       sampling_type = c(1, 2, 8),
       tgroup = list(t1 = 1:6, t2 = 7:12),
@@ -108,14 +108,14 @@ list(
   tar_target(
     # TODO: Starts in 1903, not 1970
     input_data_landings,
-    ft_input_data_landings(
+    hr_input_data_landings(
       pax_db
     ),
     format = pax::pax_tar_format_parquet()
   ),
   tar_target(
     input_data,
-    ft_input_data_had(
+    hr_input_data_had(
       year_start,
       year_end,
       age_start = 0,
@@ -173,7 +173,7 @@ list(
   tar_target(
     muppet_input_files,
     c(
-      ft_muppet_input_optionfile(
+      hr_muppet_input_optionfile(
         readLines(muppet_input_icehad),
         "params/icehad.dat.opt",
         year_end,
@@ -181,13 +181,13 @@ list(
         age_end = 10,
         plus_group = 1
       ),
-      ft_muppet_input_datafiles(
+      hr_muppet_input_datafiles(
         input_data,
         year_start,
         year_end,
         age_end
       ),
-      ft_muppet_input_progwts(
+      hr_muppet_input_progwts(
         input_data,
         year_end
       ),
@@ -230,7 +230,7 @@ list(
   ## Size based selection (logit on weight-at-age) tuned with both surveys
   tar_target(
     muppet_output_logit_length,
-    ft_muppet_run(
+    hr_muppet_run(
       "logit_length",
       muppet_input_files |>
         (function(x) {
@@ -246,7 +246,7 @@ list(
   ## Size based selection (logit on weight-at-age) tuned with the spring survey
   tar_target(
     muppet_output_smb,
-    ft_muppet_run(
+    hr_muppet_run(
       "smb",
       muppet_input_files |>
         (function(x) {
@@ -262,7 +262,7 @@ list(
   ## Size based selection (logit on weight-at-age) tuned with the autumn survey
   tar_target(
     muppet_output_smh,
-    ft_muppet_run(
+    hr_muppet_run(
       "smh",
       muppet_input_files |>
         (function(x) {
@@ -278,7 +278,7 @@ list(
   ## no surveys
   tar_target(
     muppet_output_nosurvey,
-    ft_muppet_run(
+    hr_muppet_run(
       "nosurvey",
       muppet_input_files |>
         (function(x) {
@@ -294,7 +294,7 @@ list(
   ## VPA/backwards calculation
   tar_target(
     muppet_output_vpa,
-    ft_muppet_run(
+    hr_muppet_run(
       "vpa",
       muppet_input_files |>
         (function(x) {
@@ -312,7 +312,7 @@ list(
   ## MCMC
   tar_target(
     muppet_output_mcmc,
-    ft_muppet_run(
+    hr_muppet_run(
       "mcmc",
       muppet_input_files |>
         (function(x) {
@@ -331,7 +331,7 @@ list(
   ),
   tar_target(
     muppet_output_prognosis,
-    ft_muppet_run(
+    hr_muppet_run(
       "prognosis",
       muppet_input_files |>
         (function(x) {
@@ -360,7 +360,7 @@ list(
   ## Advice
   tar_target(
     muppet_output_advice,
-    ft_muppet_run(
+    hr_muppet_run(
       "advice",
       muppet_input_files |>
         (function(x) {

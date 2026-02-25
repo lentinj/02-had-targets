@@ -1,4 +1,4 @@
-ft_muppet_input_optionfile <- function(
+hr_muppet_input_optionfile <- function(
   opt_file,
   out_name,
   year_end,

@@ -23,7 +23,7 @@ list(
   ),
 
   ## tables
-  tar_target(advice_table_landings, ft_advice_table_landings(pax_db)),
+  tar_target(advice_table_landings, hr_advice_table_landings(pax_db)),
 
   ## Advice sheets
   tar_quarto(

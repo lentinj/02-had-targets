@@ -1,4 +1,4 @@
-ft_input_data_had <- function(
+hr_input_data_had <- function(
   year_start,
   year_end,
   age_start = 1,
