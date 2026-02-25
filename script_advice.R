@@ -5,6 +5,7 @@ library(tarchetypes)
 
 tar_option_set(
   packages <- c(
+    'hafroreports',
     'pax',
     'tidyverse'
   ),

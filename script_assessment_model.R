@@ -5,6 +5,7 @@ library(tarchetypes)
 
 tar_option_set(
   packages <- c(
+    'hafroreports',
     'pax',
     'tidyverse'
   ),
@@ -25,7 +26,7 @@ list(
   } else {
     tar_target(
       pax_db,
-      hr_populate_pax(
+      populate_pax(
         species,
         year_start,
         year_end,

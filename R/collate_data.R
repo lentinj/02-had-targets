@@ -1,4 +1,4 @@
-hr_populate_pax <- function(
+populate_pax <- function(
   species,
   year_start,
   year_end,
