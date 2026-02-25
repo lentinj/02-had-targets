@@ -1,6 +1,15 @@
 # _targets.R file
+library(pax)
 library(targets)
 library(tarchetypes)
+
+tar_option_set(
+  packages <- c(
+    'pax',
+    'tidyverse'
+  ),
+  tidy_eval = TRUE
+)
 
 tar_source("config.R")
 tar_source() # Source R/*.R
@@ -9,8 +18,8 @@ list(
   # Open database from assessment_model
   tar_target(
     pax_db,
-    pax::pax_connect("_assessment_model/objects/pax_db", read_only = TRUE),
-    format = pax::pax_tar_format_duckdb()
+    pax_connect("_assessment_model/objects/pax_db", read_only = TRUE),
+    format = pax_tar_format_duckdb()
   ),
 
   ## tables

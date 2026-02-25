@@ -1,6 +1,15 @@
 # _targets.R file
+library(pax)
 library(targets)
 library(tarchetypes)
+
+tar_option_set(
+  packages <- c(
+    'pax',
+    'tidyverse'
+  ),
+  tidy_eval = TRUE
+)
 
 tar_source("config.R")
 tar_source() # Source R/*.R
@@ -14,8 +23,8 @@ list(
   if (nzchar(Sys.getenv("PAX_SOURCE_DB"))) {
     tar_target(
       pax_db,
-      pax::pax_connect(Sys.getenv("PAX_SOURCE_DB")),
-      format = pax::pax_tar_format_duckdb()
+      pax_connect(Sys.getenv("PAX_SOURCE_DB")),
+      format = pax_tar_format_duckdb()
     )
   } else {
     tar_target(
@@ -26,7 +35,7 @@ list(
         year_end,
         sampling_type = c(1, 2, 8, 30, 35)
       ),
-      format = pax::pax_tar_format_duckdb()
+      format = pax_tar_format_duckdb()
     )
   },
 
@@ -397,17 +406,17 @@ list(
         muppet_output_advice
       )
       list(
-        rby = do.call(dplyr::bind_rows, lapply(outputs, function(x) x$rby)),
+        rby = do.call(bind_rows, lapply(outputs, function(x) x$rby)),
         rbyage = do.call(
-          dplyr::bind_rows,
+          bind_rows,
           lapply(outputs, function(x) x$rbyage)
         ),
         params = do.call(
-          dplyr::bind_rows,
+          bind_rows,
           lapply(outputs, function(x) x$params)
         ),
         mcmc_results = do.call(
-          dplyr::bind_rows,
+          bind_rows,
           lapply(outputs, function(x) x$mcmc_results)
         )
       )
