@@ -51,10 +51,7 @@ pal <- c("#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C",
 ```
 
 ```{r message=FALSE, warning=FALSE}
-lang <- rmarkdown::metadata$lang
-targets::tar_source()
-# NB: params are handed to quarto via. YAML, so cannot contain complex structures
-#     Have to load them out of the current store instead
+source("quarto_setup.R")
 targets::tar_load(c(
   fig_catchdistplot_selectyrs,
   pax_db

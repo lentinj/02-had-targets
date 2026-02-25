@@ -24,10 +24,7 @@ params:
 ---
 
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
-lang <- rmarkdown::metadata$lang
-targets::tar_source()
-# NB: params are handed to quarto via. YAML, so cannot contain complex structures
-#     Have to load them out of the current store instead
+source("quarto_setup.R")
 targets::tar_load(c(
   advice_table_landings
 ))
