@@ -17,24 +17,19 @@ tar_source() # Source R/*.R
 
 list(
   ## Populate local database
-  if (nzchar(Sys.getenv("PAX_SOURCE_DB"))) {
-    tar_target(
-      pax_db,
-      pax_connect(Sys.getenv("PAX_SOURCE_DB")),
-      format = pax_tar_format_duckdb()
-    )
-  } else {
-    tar_target(
-      pax_db,
-      populate_pax(
+  tar_target(
+    pax_db,
+    if (nzchar(Sys.getenv("PAX_SOURCE_DB"))) {
+      pax_connect(Sys.getenv("PAX_SOURCE_DB"))
+    } else {
+      pax_from_mar(
         species,
         year_start,
         year_end,
-        sampling_type = c(1, 2, 8, 30, 35)
-      ),
-      format = pax_tar_format_duckdb()
-    )
-  },
+      )
+    },
+    format = pax_tar_format_duckdb()
+  ),
 
   ## Generate input data
   tar_target(
