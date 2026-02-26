@@ -42,7 +42,7 @@ tidypax::banner_func(tyr = params$year_end, tac = params$tac,tac_last_year = par
 ## Advice
 
 Hafrannsóknastofnun og Alþjóðahafrannsóknaráðið leggja til, í samræmi við aflareglu íslenskra stjórnvalda, að afli fiskveiðiárið `r params$year_end`/`r params$year_end+1` verði ekki
-meiri en `r tidypax::red_dot_number(params$tac)` tonn.
+meiri en `r prettyNum(params$tac, big.mark = " ")` tonn.
 
 ## Stofnþróun
 

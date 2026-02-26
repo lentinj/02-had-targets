@@ -40,7 +40,7 @@ tidypax::banner_func(tyr = params$year_end, tac = params$tac,tac_last_year = par
 
 ## Advice
 
-MFRI and ICES advise that when the Icelandic management plan is applied, catches in the fishing year `r params$year_end`/`r params$year_end+1` should be no more than `r tidypax::red_dot_number(params$tac)` tonnes.
+MFRI and ICES advise that when the Icelandic management plan is applied, catches in the fishing year `r params$year_end`/`r params$year_end+1` should be no more than `r prettyNum(params$tac, big.mark = " ")` tonnes.
 
 ## Stock development
 
